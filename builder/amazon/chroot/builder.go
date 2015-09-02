@@ -122,8 +122,8 @@ func (b *Builder) Prepare(raws ...interface{}) ([]string, error) {
 }
 
 func (b *Builder) Run(ui packer.Ui, hook packer.Hook, cache packer.Cache) (packer.Artifact, error) {
-	if runtime.GOOS != "linux" {
-		return nil, errors.New("The amazon-chroot builder only works on Linux environments.")
+	if runtime.GOOS != "linux" && runtime.GOOS != "darwin" {
+		return nil, errors.New("The amazon-chroot builder only works on Linux or Darwin environments.")
 	}
 
 	config, err := b.config.Config()

@@ -33,7 +33,7 @@ generate: deps
 	go generate ./...
 
 test: deps
-	go test $(TEST) $(TESTARGS) -timeout=15s
+	-go test $(TEST) $(TESTARGS) -timeout=15s
 	@go vet 2>/dev/null ; if [ $$? -eq 3 ]; then \
 		go get golang.org/x/tools/cmd/vet; \
 	fi
